@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
 <h1>All Campgrounds</h1>
 <div>
-    <a href="/campground/new">Add Campground</a>
+    <a href="/campgrounds/new">Add Campground</a>
 </div>
 <ul>
     <% for(let campground of campgrounds){ %>
@@ -18,7 +18,7 @@
                             <small class="text-muted"><%= campground.location %></small>
                         </p>
 
-                        <a class="btn btn-primary" href="/campground/<%=campground._id%>">View <%= campground.title %></a>
+                        <a class="btn btn-primary" href="/campgrounds/<%=campground._id%>">View <%= campground.title %></a>
                     </div>
                 </div>
             </div>
