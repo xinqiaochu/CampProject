@@ -11,8 +11,8 @@ const upload = multer({ dest: 'uploads/' })
 router.route('/')
     .get(catchAsync(campgrounds.index))
     // .post(isLoggedIn, validateCampground, catchAsync(campgrounds.createCampgroud));
-    .post(upload.single('image'), (req, res) => {
-        res.send(req.body, req.file);
+    .post(upload.array('image'), (req, res) => {
+        console.log(req.body, req.files);
     })
     
 router.get('/new', isLoggedIn, campgrounds.renderNewForm);
