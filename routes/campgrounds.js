@@ -6,13 +6,15 @@ const { isLoggedIn,isAuthor, validateCampground } = require('../middleware');
 const { redirect } = require('express/lib/response');
 const campgrounds = require('../controllers/campgrounds');
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const { storage } = require('../cloudinary');
+const upload = multer(storage);
 
 router.route('/')
     .get(catchAsync(campgrounds.index))
     // .post(isLoggedIn, validateCampground, catchAsync(campgrounds.createCampgroud));
     .post(upload.array('image'), (req, res) => {
         console.log(req.body, req.files);
+        res.send("good!!!")
     })
     
 router.get('/new', isLoggedIn, campgrounds.renderNewForm);
